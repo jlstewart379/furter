@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *tablesButton;
 - (IBAction)showTables:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *simpleScreenButton;
+- (IBAction)goToSimpleScreen:(id)sender;
+
 - (IBAction)onLabeledButtonClicked:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

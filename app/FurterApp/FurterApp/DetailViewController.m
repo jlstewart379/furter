@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "TablesViewController.h"
+#import "SimpleScreenViewController.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -76,6 +77,11 @@
 
 - (IBAction)someButtonClick:(id)sender {
     [self.labelTextField setText:@"The button was clicked!"];
+}
+
+- (IBAction)goToSimpleScreen:(id)sender {
+    SimpleScreenViewController *simpleScreen = [[SimpleScreenViewController alloc] init];
+    [[self navigationController] pushViewController:simpleScreen animated:YES]; 
 }
 
 - (IBAction)onLabeledButtonClicked:(id)sender {
