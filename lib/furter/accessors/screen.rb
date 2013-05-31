@@ -7,6 +7,10 @@ module Furter
         send_get('dump')
       end
 
+      def get_window(element)
+        big_dump[element]
+      end
+
     end
   end
 end
