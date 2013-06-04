@@ -10,6 +10,7 @@ World(Furter::Navigation)
 require_rel '/screens'
 
 APP_BUNDLE_PATH = File.expand_path( '../../../app/FurterApp/Frank/frankified_build/FurterApp.app', __FILE__ )
+$SERVER = Frank::Cucumber::Gateway.new
 
 Frank::Cucumber::FrankHelper.use_shelley_from_now_on
 
@@ -32,3 +33,5 @@ Furter::Navigation.routes = {
     ]
 
 }
+
+

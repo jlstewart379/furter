@@ -4,6 +4,4 @@ class SimplePage
   screen()
   views('SimpleScreenViewController')
 
-
-
 end

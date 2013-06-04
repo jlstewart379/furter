@@ -108,9 +108,12 @@ module Furter
 
     def screen()
       define_method("all_views") do
-        Furter::Accessors::Screen.new.all_views
+        Furter::Accessors::Screen.new(nil).all_views
+      end
+
+      define_method("view_by_label") do |value|
+        Furter::Accessors::Screen.new(nil).view_by_label value
       end
     end
-
   end
 end

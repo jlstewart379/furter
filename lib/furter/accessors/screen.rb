@@ -23,8 +23,32 @@ module Furter
         end
       end
 
+      def view_by_id_with_data(json, id)
+        if json["uid"].eql?(id)
+          json
+        else
+          json["subviews"].each do |view|
+            view_by_id_with_data(view, id)
+          end
+        end
+      end
+
+      def view_by_label(label)
+        view_by_label_with_data(@screen_data, label)
+      end
+
+      def view_by_label_with_data(json,label)
+        if json["accessibilityLabel"].eql? label
+          json
+        else
+          json["subviews"].each do |view|
+            view_by_label_with_data(view,label)
+          end
+        end
+      end
+
       def view_class(label)
-        view_by_label(@screen_data, label)[0]["class"]
+        view_by_label(label)[0]["class"]
       end
 
       def view_frame_width(label)
@@ -36,11 +60,11 @@ module Furter
       end
 
       def view_frame(label)
-        view_by_label(@screen_data, label)[0]["frame"]
+        view_by_label(label)[0]["frame"]
       end
 
       def view_is_visible(label)
-        view_by_label(@screen_data, label)[0]["isHidden"] == 0
+        view_by_label(label)[0]["isHidden"] == 0
       end
 
       def view_by_id(id)
@@ -48,47 +72,27 @@ module Furter
       end
 
       def view_x(label)
-        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["origin"]["x"]
+        view_by_label(label)[0]["accessibilityFrame"]["origin"]["x"]
       end
 
       def view_y(label)
-        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["origin"]["y"]
+        view_by_label(label)[0]["accessibilityFrame"]["origin"]["y"]
       end
 
       def view_origin(label)
-        view_by_label(@screen_data, label)
+        view_by_label(label)
       end
 
       def view_tag(label)
-        view_by_label(@screen_data,label)[0]["tag"]
+        view_by_label(label)[0]["tag"]
       end
 
       def view_accessibility_height(label)
-        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["size"]["height"]
+        view_by_label(label)[0]["accessibilityFrame"]["size"]["height"]
       end
 
       def view_accessibility_width(label)
-        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["size"]["width"]
-      end
-
-      def view_by_id_with_data(json, id)
-        if json["uid"].eql?(id)
-          json
-        else
-          json["subviews"].each do |view|
-            view_by_id_with_data(view, id)
-          end
-        end
-      end
-
-      def view_by_label(json,label)
-        if json["accessibilityLabel"].eql? label
-          json
-        else
-          json["subviews"].each do |view|
-            view_by_label(view,label)
-          end
-        end
+        view_by_label(label)[0]["accessibilityFrame"]["size"]["width"]
       end
 
       private

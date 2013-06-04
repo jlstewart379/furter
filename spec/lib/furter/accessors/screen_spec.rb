@@ -17,7 +17,7 @@ describe Furter::Accessors::Screen do
       screen.view_by_id_with_data(json, 2).should == [{"frame"=>{"size"=>{"width"=>148, "height"=>888}, "origin"=>{"x"=>20, "y"=>0}}, "uid"=>2, "backgroundColor"=>"<NON-RGB COLOR>", "isHidden"=>0, "accessibilityLabel"=>"testLabel", "subviews"=>[], "tag"=>0, "accessibilityFrame"=>{"size"=>{"width"=>444, "height"=>555}, "origin"=>{"x"=>20, "y"=>0}}, "alpha"=>1, "autoresizingMask"=>36, "class"=>"UIView"}]
     end
     it 'can get a view by label' do
-      screen.view_by_label(json,"testLabel").should == [{"frame"=>{"size"=>{"width"=>148, "height"=>888}, "origin"=>{"x"=>20, "y"=>0}}, "uid"=>2, "backgroundColor"=>"<NON-RGB COLOR>", "isHidden"=>0, "accessibilityLabel"=>"testLabel", "subviews"=>[], "tag"=>0, "accessibilityFrame"=>{"size"=>{"width"=>444, "height"=>555}, "origin"=>{"x"=>20, "y"=>0}}, "alpha"=>1, "autoresizingMask"=>36, "class"=>"UIView"}]
+      screen.view_by_label("testLabel").should == [{"frame"=>{"size"=>{"width"=>148, "height"=>888}, "origin"=>{"x"=>20, "y"=>0}}, "uid"=>2, "backgroundColor"=>"<NON-RGB COLOR>", "isHidden"=>0, "accessibilityLabel"=>"testLabel", "subviews"=>[], "tag"=>0, "accessibilityFrame"=>{"size"=>{"width"=>444, "height"=>555}, "origin"=>{"x"=>20, "y"=>0}}, "alpha"=>1, "autoresizingMask"=>36, "class"=>"UIView"}]
     end
   end
   context 'getting view properties by label' do
