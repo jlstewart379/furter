@@ -11,16 +11,16 @@ describe Furter::Accessors::Screen do
       screen.all_views.count == 2
     end
     it 'can get a view by id' do
-      screen.view_by_id_2(1).should == json
+      screen.view_by_id(1).should == json
     end
     it 'can get a nested view by id' do
-      screen.view_by_id(json, 2).should == [{"frame"=>{"size"=>{"width"=>748, "height"=>1024}, "origin"=>{"x"=>20, "y"=>0}}, "uid"=>2, "backgroundColor"=>"<NON-RGB COLOR>", "isHidden"=>0, "accessibilityLabel"=>"testLabel", "subviews"=>[], "tag"=>0, "accessibilityFrame"=>{"size"=>{"width"=>748, "height"=>1024}, "origin"=>{"x"=>20, "y"=>0}}, "alpha"=>1, "autoresizingMask"=>36, "class"=>"UIView"}]
+      screen.view_by_id_with_data(json, 2).should == [{"frame"=>{"size"=>{"width"=>748, "height"=>1024}, "origin"=>{"x"=>20, "y"=>0}}, "uid"=>2, "backgroundColor"=>"<NON-RGB COLOR>", "isHidden"=>0, "accessibilityLabel"=>"testLabel", "subviews"=>[], "tag"=>0, "accessibilityFrame"=>{"size"=>{"width"=>748, "height"=>1024}, "origin"=>{"x"=>20, "y"=>0}}, "alpha"=>1, "autoresizingMask"=>36, "class"=>"UIView"}]
     end
     it 'can get a view by label' do
       screen.view_by_label(json,"testLabel").should == [{"frame"=>{"size"=>{"width"=>748, "height"=>1024}, "origin"=>{"x"=>20, "y"=>0}}, "uid"=>2, "backgroundColor"=>"<NON-RGB COLOR>", "isHidden"=>0, "accessibilityLabel"=>"testLabel", "subviews"=>[], "tag"=>0, "accessibilityFrame"=>{"size"=>{"width"=>748, "height"=>1024}, "origin"=>{"x"=>20, "y"=>0}}, "alpha"=>1, "autoresizingMask"=>36, "class"=>"UIView"}]
     end
   end
-  context 'getting view properties' do
+  context 'getting view properties by label' do
     it 'can get the view class' do
       screen.view_class("testLabel").should == "UIView"
     end
@@ -31,7 +31,13 @@ describe Furter::Accessors::Screen do
       screen.view_height("testLabel").should == 1024
     end
     it 'can get the view visibility' do
-      screen.view_visibility("testLabel").should == 0
+      screen.view_is_visible("testLabel").should be_true
+    end
+    it 'can get the view x-coordinates' do
+      screen.view_x("testLabel").should == 20
+    end
+    it 'can get the view y-coordinates' do
+      screen.view_y("testLabel").should == 0
     end
   end
 end

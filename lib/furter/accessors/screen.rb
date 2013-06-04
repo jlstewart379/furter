@@ -39,21 +39,32 @@ module Furter
         view_by_label(@screen_data, label)[0]["frame"]
       end
 
-      def view_visibility(label)
-        view_by_label(@screen_data, label)[0]["isHidden"]
+      def view_is_visible(label)
+        view_by_label(@screen_data, label)[0]["isHidden"] == 0
       end
 
-
-      def view_by_id_2(id)
-        view_by_id(@screen_data, id)
+      def view_by_id(id)
+        view_by_id_with_data(@screen_data, id)
       end
 
-      def view_by_id(json, id)
+      def view_x(label)
+        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["origin"]["x"]
+      end
+
+      def view_y(label)
+        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["origin"]["y"]
+      end
+
+      def view_origin(label)
+        p view_by_label(@screen_data, label)
+      end
+
+      def view_by_id_with_data(json, id)
         if json["uid"].eql?(id)
           json
         else
           json["subviews"].each do |view|
-            view_by_id(view, id)
+            view_by_id_with_data(view, id)
           end
         end
       end
