@@ -27,11 +27,11 @@ module Furter
         view_by_label(@screen_data, label)[0]["class"]
       end
 
-      def view_width(label)
+      def view_frame_width(label)
         view_frame(label)["size"]["width"]
       end
 
-      def view_height(label)
+      def view_frame_height(label)
         view_frame(label)["size"]["height"]
       end
 
@@ -56,7 +56,19 @@ module Furter
       end
 
       def view_origin(label)
-        p view_by_label(@screen_data, label)
+        view_by_label(@screen_data, label)
+      end
+
+      def view_tag(label)
+        view_by_label(@screen_data,label)[0]["tag"]
+      end
+
+      def view_accessibility_height(label)
+        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["size"]["height"]
+      end
+
+      def view_accessibility_width(label)
+        view_by_label(@screen_data, label)[0]["accessibilityFrame"]["size"]["width"]
       end
 
       def view_by_id_with_data(json, id)
