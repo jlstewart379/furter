@@ -25,5 +25,10 @@ Furter::Navigation.routes = {
     :goto_tables => [
         [DetailPage, :button_table],
         [TablesPage]
+    ],
+    :simple => [
+      [DetailPage, :button_simple],
+      [SimplePage]
     ]
+
 }

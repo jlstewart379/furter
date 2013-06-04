@@ -105,5 +105,12 @@ module Furter
         (view_classes & Furter::Accessors::View.new.next_responders) == view_classes
       end
     end
+
+    def screen()
+      define_method("all_views") do
+        Furter::Accessors::Screen.new.all_views
+      end
+    end
+
   end
 end
